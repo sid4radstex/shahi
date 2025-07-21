@@ -24,7 +24,7 @@ body {
 function sendEmail() {
     var recipient = "info@radstexas.com";
     var subject = "Question about RADS Texas from " + document.forms[0].email.value;
-    var body = "";
+    var body = document.forms[0].message.value;;
     var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     window.location.href = mailtoLink;
 }
