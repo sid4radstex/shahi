@@ -22,8 +22,8 @@ body {
 </style>
 <script language="Javascript">
 function sendEmail() {
-    var recipient = "info@yourdomain.com";
-    var subject = "Question about Product A";
+    var recipient = "info@radstexas.com";
+    var subject = "Question about RADS Texas from " + document.forms[0].email.value;
     var body = "Hi team, I have a question regarding Product A. Please provide more details.";
     var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     window.location.href = mailtoLink;
