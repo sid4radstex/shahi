@@ -59,7 +59,7 @@ function sendEmail() {
 							<div>
 								<section>
 									<h2>Get in touch</h2>
-									<form method="post" action="javascript:onClick();">
+									<form method="post"">
 										<div class="fields">
 											<div class="field half">
 												<input type="text" name="name" id="name" placeholder="Name" />
@@ -72,7 +72,7 @@ function sendEmail() {
 											</div>
 										</div>
 										<ul class="actions">
-											<li><input type="submit" value="Send" class="primary" /></li>
+											<li><input type="button" value="Send" class="primary"  onclick="Javascript:sendEmail();"/></li>
 											<li><input type="reset" value="Reset" /></li>
 										</ul>
 									</form>
