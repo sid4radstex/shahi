@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RADS TEXAS - Your Trusted Partner in DFW Real Estate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #007bff; /* Blue */
@@ -26,11 +25,15 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            /* Add this for smoother transition if content moves */
+            transition: transform var(--transition-speed);
         }
 
-        /* Prevent scrolling when mobile menu is active */
+        /* NEW: Body styling when the menu is active */
         body.menu-active {
-            overflow: hidden;
+            position: fixed; /* Fix the body in place */
+            width: 100%; /* Ensure it spans full width */
+            /* The 'top' property will be set by JavaScript to handle scroll position */
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -41,11 +44,10 @@
             line-height: 1.2;
         }
 
-        /* H1 is now hidden by default (for all screen sizes) */
         h1 {
             font-size: 3.2em;
             font-weight: 700;
-            display: none; /* Hidden by default */
+            display: none;
         }
         h2 { font-size: 2.5em; font-weight: 600; }
         h3 { font-size: 1.8em; font-weight: 600; }
@@ -62,119 +64,118 @@
         .navbar {
             background-color: var(--dark-color);
             padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; /* THIS IS KEY FOR STICKY BEHAVIOR */
+            top: 0; /* Sticks to the top of the viewport */
+            z-index: 1000; /* High z-index to stay above content */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-            display: flex; /* Use flexbox for the navbar itself */
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative; /* For absolute positioning of toggle */
         }
 
         .navbar .container {
-            /* This container will now mostly serve to limit width */
             display: flex;
-            justify-content: center; /* Center the brand placeholder */
+            justify-content: center;
             align-items: center;
-            width: 100%; /* Ensure it spans the width */
+            width: 100%;
         }
 
         /* Brand Placeholder as Header & Centered */
         .brand-placeholder {
             color: var(--white-color);
             font-weight: 700;
-            font-size: 2.5em; /* Default font size for larger screens */
+            font-size: 2.5em;
             font-family: 'Montserrat', sans-serif;
-            display: block; /* Always visible */
-            text-align: center; /* Ensure text is centered */
-            flex-grow: 1; /* Allow it to take available space */
-            padding: 10px 60px; /* Doubled vertical padding from 0 to 10px to double height */
-            box-sizing: border-box; /* Include padding in width */
-            line-height: 1; /* Adjust line-height to vertically align with toggle */
+            display: block;
+            text-align: center;
+            flex-grow: 1;
+            padding: 10px 60px;
+            box-sizing: border-box;
+            line-height: 1;
         }
 
         /* Media query for mobile devices */
         @media (max-width: 767px) {
             .brand-placeholder {
-                font-size: 1.5em; /* Decrease font size for mobile */
-                padding: 10px 40px; /* Adjust horizontal padding if needed */
+                font-size: 1.5em;
+                padding: 10px 40px;
             }
         }
 
         /* Hamburger menu specific styles */
         .menu-toggle {
-            display: block; /* Always visible */
+            display: block;
             color: var(--white-color);
             font-size: 1.8em;
             cursor: pointer;
             padding: 5px 10px;
-            position: absolute; /* Position absolutely within navbar */
-            top: 50%; /* Align vertically with brand */
-            left: 20px; /* Hamburger icon is in the top-left */
-            transform: translateY(-50%); /* Adjust for vertical centering */
-            z-index: 1002; /* Above overlay and menu when active */
-            transition: transform var(--transition-speed), left var(--transition-speed), right var(--transition-speed);
+            position: absolute; /* Relative to .navbar when closed */
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 1002; /* Above nav links when closed */
+            transition: transform var(--transition-speed);
         }
 
         .menu-toggle .fa-times {
             display: none; /* Hide X by default */
         }
 
-        /* Navigation Links (the actual menu) - Hidden by default */
+        /* Navigation Links (the actual menu) - Fixed to viewport when open */
         .nav-links {
-            position: fixed;
+            position: fixed; /* Keep fixed for slide-in behavior */
             top: 0;
-            left: -100%; /* Start off-screen to the LEFT */
-            width: 70%; /* Adjust width of the side menu */
-            max-width: 300px; /* Max width for larger screens */
+            left: -100%;
+            width: 70%;
+            max-width: 300px;
             height: 100%;
             background-color: var(--dark-color);
             flex-direction: column;
-            justify-content: flex-start; /* Align items to the top */
-            align-items: flex-start; /* Align items to the left */
-            padding: 80px 20px 20px; /* Padding for content inside the slide-in menu */
-            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3); /* Adjust shadow direction */
-            transition: left var(--transition-speed); /* Smooth slide-in/out from LEFT */
-            z-index: 1001; /* Above hero and other content */
-            gap: 15px; /* Spacing between links */
-            display: none; /* Hidden by default for all screen sizes */
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 80px 20px 20px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            transition: left var(--transition-speed);
+            z-index: 1001; /* Stays above overlay */
+            gap: 15px;
+            display: none; /* Hidden by default, shown by JS/class */
         }
 
         .nav-links a {
             width: 100%;
-            text-align: left; /* Align text to the left within the side menu */
-            padding: 12px 0; /* Adjust padding for side menu links */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator for links */
+            text-align: left;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 1.1em;
-            color: var(--white-color); /* Links are white */
+            color: var(--white-color);
         }
         .nav-links a:last-child {
-            border-bottom: none; /* No border for the last link */
+            border-bottom: none;
         }
 
         /* When menu is active (body has menu-active class) */
         body.menu-active .nav-links {
-            left: 0; /* Slide into view from the LEFT */
+            left: 0; /* Slide into view */
             display: flex; /* Show the menu */
         }
 
-        /* Keep the menu toggle (X icon) in the top-left when active as well */
+        /* Menu toggle when menu is active: Fixed to viewport */
         body.menu-active .menu-toggle {
-            position: fixed; /* Fixed when menu is open */
+            position: fixed; /* Important: Make it fixed to the viewport when open */
             top: 25px; /* Adjust vertical position */
             left: 20px; /* Keep it on the left */
-            right: auto; /* Ensure no conflicting right property */
-            transform: rotate(90deg); /* Optional: rotate X icon */
+            transform: translateY(0%) rotate(90deg); /* Adjust for rotation */
+            z-index: 1002; /* Ensure it's above the menu */
         }
         body.menu-active .menu-toggle .fa-bars {
-            display: none; /* Hide bars */
+            display: none;
         }
         body.menu-active .menu-toggle .fa-times {
-            display: block; /* Show times */
+            display: block;
         }
 
-        /* Overlay for dimmed background */
+        /* Overlay for dimmed background (fixed) */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -183,7 +184,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            z-index: 1000; /* Below menu, above fixed body */
             opacity: 0;
             transition: opacity var(--transition-speed);
         }
@@ -259,9 +260,7 @@
             background-color: var(--white-color);
             border-radius: 12px;
             box-shadow: var(--box-shadow);
-            /* Adjust scroll-margin-top to account for the fixed navbar height */
-            /* This is the key CSS property for sticky headers */
-            scroll-margin-top: 80px; /* You had this set to 80px, which seems appropriate for your 90px navbar + some buffer */
+            scroll-margin-top: 80px; /* Important for smooth scrolling to sections */
         }
 
         .section:last-of-type {
@@ -523,24 +522,10 @@
             background-color: var(--dark-color);
             color: var(--white-color);
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
             font-size: 0.9em;
             border-top: 5px solid var(--primary-color);
         }
-
-        /* Removed social links from footer, so this rule is no longer directly used */
-        /*
-        footer .social-links a {
-            color: var(--white-color);
-            font-size: 1.5em;
-            margin: 0 10px;
-            transition: color var(--transition-speed);
-        }
-
-        footer .social-links a:hover {
-            color: var(--primary-color);
-        }
-        */
 
         footer p {
             margin: 10px 0 0;
@@ -721,6 +706,8 @@
     </footer>
 
     <script>
+        let scrollPosition = 0; // Store scroll position globally
+
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.querySelector('.nav-links');
@@ -728,17 +715,28 @@
             const body = document.body;
 
             function toggleMenu() {
-                body.classList.toggle('menu-active');
-                // Toggle icons
-                const barsIcon = menuToggle.querySelector('.fa-bars');
-                const timesIcon = menuToggle.querySelector('.fa-times');
-
                 if (body.classList.contains('menu-active')) {
-                    barsIcon.style.display = 'none';
-                    timesIcon.style.display = 'block';
+                    // CLOSE menu
+                    body.classList.remove('menu-active');
+                    body.style.position = ''; // Remove fixed position
+                    body.style.top = '';      // Remove top offset
+
+                    // Scroll back to the original position
+                    window.scrollTo(0, scrollPosition);
+
+                    // Toggle icons back to bars
+                    menuToggle.querySelector('.fa-bars').style.display = 'block';
+                    menuToggle.querySelector('.fa-times').style.display = 'none';
+
                 } else {
-                    barsIcon.style.display = 'block';
-                    timesIcon.style.display = 'none';
+                    // OPEN menu
+                    scrollPosition = window.pageYOffset; // Save current scroll position
+                    body.classList.add('menu-active');
+                    body.style.top = `-${scrollPosition}px`; // Offset body by scroll position
+
+                    // Toggle icons to times
+                    menuToggle.querySelector('.fa-bars').style.display = 'none';
+                    menuToggle.querySelector('.fa-times').style.display = 'block';
                 }
             }
 
@@ -749,9 +747,9 @@
             if (navLinks) {
                 // Close menu when a link is clicked
                 navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        // This event listener is ONLY for closing the menu.
-                        // The actual scrolling is handled by CSS scroll-behavior and scroll-margin-top.
+                    link.addEventListener('click', (event) => {
+                        // Prevent default scroll behavior momentarily if needed, then re-enable
+                        // This part is for closing the menu. The smooth scroll to anchor is handled by CSS.
                         if (body.classList.contains('menu-active')) {
                             toggleMenu(); // Close the menu
                         }
