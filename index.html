@@ -1,99 +1,664 @@
-<!DOCTYPE HTML>
-<!--
-	Multiverse by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>RADS TEXAS</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-body {
-  background-image: url(images/IMG_7225.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-} 
-</style>
-<script language="Javascript">
-function sendEmail() {
-    var recipient = "info@radstexas.com";
-	var emailString = document.forms[0].email.value;
-	var subject = "Question about RADS Texas from " + document.forms[0].email.value;
-	if (emailString=="") {
-		subject = "Question about RADS Texas ";
-	}
-    var body = document.forms[0].message.value;;
-    var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    window.location.href = mailtoLink;
-}
-</script>
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADS TEXAS - Your Trusted Partner in DFW Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff; /* Blue */
+            --secondary-color: #28a745; /* Green */
+            --dark-color: #212529; /* Dark Grey */
+            --light-color: #f8f9fa; /* Light Grey */
+            --white-color: #ffffff;
+            --text-color: #495057;
+            --border-color: #dee2e6;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s ease;
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-				<!-- Header -->
-					<header id="header">
-						
-						<nav>
-							<ul>
-								<li><a href="#footer" class="icon solid fa-info-circle">About</a></li>
-							</ul>
-						</nav>
-					</header>
-				<!-- Footer -->
-					<footer id="footer" class="panel">
-						<div class="inner split">
-							<div>
-								<section>
-									<h2>RADS TEXAS LLC</h2>
-									<p>RADS TEXAS is a real estate investment company based in the Dallas-Fort Worth (DFW) metroplex. The company specializes in acquiring, managing, and leasing residential and multi-family properties across high-demand neighborhoods within the region. Our mission is to build long-term value through strategic property acquisitions and quality rental management, providing comfortable, well-maintained housing options for tenants while delivering steady returns for stakeholders. With a focus on market trends, community development, and responsible ownership, RADS TEXAS aims to grow a diversified real estate portfolio that supports both short-term cash flow and long-term asset appreciation in the dynamic DFW market.</p>
-								</section>
-								<p class="copyright">
-									&copy; Design: <a href="http://html5up.net">HTML5 UP. Used under CCA 3.0 License. Modified from Original</a>.
-								</p>
-							</div>
-							<div>
-								<section>
-									<h2>Get in touch</h2>
-									<form method="post"">
-										<div class="fields">
-											<div class="field half">
-												<input type="text" name="name" id="name" placeholder="Name" />
-											</div>
-											<div class="field half">
-												<input type="text" name="email" id="email" placeholder="Email" />
-											</div>
-											<div class="field">
-												<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="button" value="Send" class="primary"  onclick="Javascript:sendEmail();"/></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-							</div>
-						</div>
-					</footer>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            margin-top: 0;
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
 
-			</div>
+        h1 { font-size: 3.2em; font-weight: 700; }
+        h2 { font-size: 2.5em; font-weight: 600; }
+        h3 { font-size: 1.8em; font-weight: 600; }
+        h4 { font-size: 1.5em; font-weight: 600; }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
 
-	</body>
+        /* --- Header & Navigation --- */
+        .hero-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x600?text=DFW+Skyline+Background') no-repeat center center/cover;
+            color: var(--white-color);
+            padding: 10px 0; /* Reduced from 100px */
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 123, 255, 0.2); /* A subtle overlay */
+        }
+
+        .hero-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-header h1 {
+            font-size: 4em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--white-color); /* Ensure white text */
+        }
+
+        .hero-header p {
+            font-size: 1.5em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-weight: 400;
+        }
+
+        .navbar {
+            background-color: var(--dark-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center; /* Center align the navbar links */
+            align-items: center;
+            flex-direction: row; /* Ensure items are in a row */
+        }
+
+        .nav-links {
+            display: flex; /* Makes its children (links) flex items */
+            justify-content: center; /* Centers the links horizontally within nav-links */
+            flex-grow: 1; /* Allows nav-links to take up available space and help centering */
+        }
+
+        .nav-links a {
+            color: var(--white-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker primary */
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #218838; /* Darker secondary */
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 60px 0;
+            margin-bottom: 40px;
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            /* Add scroll-margin-top to ensure proper scrolling past the fixed navbar */
+            scroll-margin-top: 80px; /* Adjust this value if your navbar height changes */
+        }
+
+        .section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card, .service-card {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card:hover, .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3, .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- Testimonials --- */
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto; /* For potential JS carousel */
+            scroll-snap-type: x mandatory;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+
+        .testimonial-carousel::-webkit-scrollbar { /* Chrome, Safari, Opera */
+            display: none;
+        }
+
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 95%; /* Adjust for mobile, will be wider on desktop */
+            max-width: 500px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-right: 20px; /* Space between cards */
+            scroll-snap-align: start;
+            border-left: 5px solid var(--primary-color);
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                width: 48%; /* Two per row on larger screens */
+            }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                width: 31%; /* Three per row on larger screens */
+            }
+        }
+
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
+            text-align: right;
+        }
+
+        /* --- Property Listings --- */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            border: 1px solid var(--border-color);
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .property-card-content {
+            padding: 25px;
+        }
+
+        .property-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .property-card .details {
+            font-size: 0.95em;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        .property-card .details span {
+            margin-right: 15px;
+        }
+        .property-card .details strong {
+            color: var(--dark-color);
+        }
+
+        .property-card .price {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-top: 15px;
+            text-align: right;
+        }
+        .property-card .price small {
+            font-size: 0.7em;
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        /* --- Contact Form --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        .contact-info-block {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .contact-info-block h3 {
+            color: var(--white-color);
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+        .contact-info-block p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .contact-info-block p strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        .contact-form-container {
+            padding: 40px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        footer .social-links a {
+            color: var(--white-color);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color var(--transition-speed);
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        footer p {
+            margin: 10px 0 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 80px 0;
+            }
+            .hero-header h1 {
+                font-size: 2.8em;
+            }
+            .hero-header p {
+                font-size: 1.2em;
+            }
+            .navbar .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+            }
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+            .section {
+                padding: 40px 0;
+                /* Adjust scroll-margin-top for smaller screens if navbar height changes significantly */
+                scroll-margin-top: 90px; /* Example adjustment */
+            }
+            .section h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            .grid-3, .property-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info-block {
+                padding: 30px;
+            }
+            .contact-form-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-header h1 {
+                font-size: 2.2em;
+            }
+            .hero-header p {
+                font-size: 1em;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.85em;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="hero-header">
+        <div class="container">
+            <h1>RADS TEXAS</h1>
+            <p>Your Premier Partner for Buying, Renting, and Investing in Dallas-Fort Worth Real Estate.</p>
+            <a href="#contact" class="btn">Get a Free Consultation Today</a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#about">About Us</a>
+                <a href="#services">Our Services</a>
+                <a href="#why-choose-us">Why Choose Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About RADS TEXAS</h2>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <i class="fas fa-building icon"></i>
+                        <h3>Local Market Experts</h3>
+                        <p>With deep roots in the DFW community, our team possesses unparalleled knowledge of the local real estate landscape. We understand neighborhood dynamics, market trends, and hidden opportunities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-handshake icon"></i>
+                        <h3>Trusted Partnerships</h3>
+                        <p>We build lasting relationships with our clients, tenants, and investors based on transparency, honesty, and mutual respect. Your success is our priority.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line icon"></i>
+                        <h3>Strategic Growth</h3>
+                        <p>RADS TEXAS is committed to sustainable growth, enhancing property values, and contributing positively to the vibrant Dallas-Fort Worth metroplex.</p>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: 40px; font-size: 1.1em;">
+                    From swift property acquisitions to managing high-quality rentals and identifying lucrative investment ventures, we are your all-in-one real estate solution in DFW.
+                </p>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2>Our Comprehensive Services</h2>
+                <div class="grid-3">
+                    <div class="service-card">
+                        <i class="fas fa-home icon"></i>
+                        <h3>We Buy Properties</h3>
+                        <p>Need to sell your property fast in DFW? We offer fair cash offers, quick closings, and buy homes in any condition – no repairs, no commissions, no hassle. Experience a stress-free sale.</p>
+                        <a href="#contact" class="btn btn-secondary btn-sm" style="font-size: 0.9em; padding: 8px 15px;">Get an Offer</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-key icon"></i>
+                        <h3>Quality Rentals</h3>
+                        <p>Discover your next home from our curated selection of well-maintained rental properties across Dallas, Fort Worth, and surrounding communities. Find comfort and convenience with us.</p>
+                        <a href="#rentals" class="btn btn-secondary btn-sm" style="font-size: 0.9em; padding: 8px 15px;">View Rentals</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-dollar-sign icon"></i>
+                        <h3>Real Estate Investment</h3>
+                        <p>Explore passive income and wealth building through strategic real estate investments. We identify, acquire, and manage high-potential properties for our partners.</p>
+                        <a href="#contact" class="btn btn-secondary btn-sm" style="font-size: 0.9em; padding: 8px 15px;">Invest With Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-choose-us" class="section">
+            <div class="container">
+                <h2>Why Choose DFW Property Solutions?</h2>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <i class="fas fa-clock icon"></i>
+                        <h3>Efficiency & Speed</h3>
+                        <p>We pride ourselves on streamlined processes, ensuring quick transactions for sellers and efficient placement for renters.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt icon"></i>
+                        <h3>Transparency & Trust</h3>
+                        <p>Every interaction is built on honesty. We provide clear communication and fair dealings, every step of the way.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-friends icon"></i>
+                        <h3>Customer-Centric Approach</h3>
+                        <p>Your needs are at the heart of our operations. We offer personalized solutions and dedicated support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-wrench icon"></i>
+                        <h3>Quality & Maintenance</h3>
+                        <p>Our rental properties are meticulously maintained, offering comfortable and worry-free living experiences.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-city icon"></i>
+                        <h3>Community Focused</h3>
+                        <p>We invest in properties that enhance neighborhoods and contribute to the overall vibrancy of DFW.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-search-dollar icon"></i>
+                        <h3>Fair & Competitive Offers</h3>
+                        <p>When we buy, we ensure our offers are competitive and reflect the true value of your property, regardless of its condition.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Get In Touch With Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info-block">
+                        <h3>Connect with DFW Property Solutions</h3>
+                        <p>Whether you're looking to sell, rent, or invest, we're here to help you navigate the DFW real estate market with ease.</p>
+                        <p><strong>Email:</strong> <a href="mailto:info@radstexas.com" style="color: var(--primary-color); text-decoration: none;">info@radstexas.com</a></p>
+                        <p><strong>Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM CDT</p>
+                    </div>
+                    <div class="contact-form-container">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="name" placeholder="Your Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">Phone (Optional)</label>
+                                <input type="tel" id="contact-phone" name="phone" placeholder="(123) 456-7890">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Subject</label>
+                                <input type="text" id="contact-subject" name="subject" placeholder="e.g., Property Inquiry, Rental Application" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 RADS TEXAS LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
 </html>
