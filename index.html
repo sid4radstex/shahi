@@ -51,7 +51,7 @@
         .hero-header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x600?text=DFW+Skyline+Background') no-repeat center center/cover;
             color: var(--white-color);
-            padding: 10px 0; /* Reduced from 100px */
+            padding: 70px 0; /* Adjusted padding for better visual balance on desktop */
             text-align: center;
             position: relative;
         }
@@ -63,7 +63,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 123, 255, 0.2); /* A subtle overlay */
+            background: rgba(0, 123, 255, 0.2);
         }
 
         .hero-header .container {
@@ -75,7 +75,7 @@
             font-size: 4em;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: var(--white-color); /* Ensure white text */
+            color: var(--white-color);
         }
 
         .hero-header p {
@@ -96,15 +96,19 @@
 
         .navbar .container {
             display: flex;
-            justify-content: center; /* Center align the navbar links */
+            justify-content: center;
             align-items: center;
-            flex-direction: row; /* Ensure items are in a row */
+            flex-direction: row;
         }
 
         .nav-links {
-            display: flex; /* Makes its children (links) flex items */
-            justify-content: center; /* Centers the links horizontally within nav-links */
-            flex-grow: 1; /* Allows nav-links to take up available space and help centering */
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+            /* Key for mobile alignment: allows items to wrap */
+            flex-wrap: wrap;
+            /* Provides space between wrapped items */
+            gap: 10px;
         }
 
         .nav-links a {
@@ -156,8 +160,7 @@
             background-color: var(--white-color);
             border-radius: 12px;
             box-shadow: var(--box-shadow);
-            /* Add scroll-margin-top to ensure proper scrolling past the fixed navbar */
-            scroll-margin-top: 80px; /* Adjust this value if your navbar height changes */
+            scroll-margin-top: 80px; /* Ensures previous section is completely removed */
         }
 
         .section:last-of-type {
@@ -257,7 +260,6 @@
                 width: 31%; /* Three per row on larger screens */
             }
         }
-
 
         .testimonial-card p {
             font-style: italic;
@@ -452,20 +454,28 @@
                 font-size: 1.2em;
             }
             .navbar .container {
-                flex-direction: column;
-                gap: 15px;
+                /* Changed to row for consistency with desktop nav-links behavior */
+                flex-direction: row;
+                /* Removes the extra gap that flex-direction: column was adding here */
+                gap: 0;
+                /* Ensures content within container uses available space, helpful for centering */
+                justify-content: center;
             }
             .nav-links {
+                /* Ensures links wrap onto multiple lines if needed */
                 flex-wrap: wrap;
+                /* Spacing between the wrapped links */
+                gap: 10px; /* Reduced from 15px for a tighter look on mobile */
             }
             .nav-links a {
                 padding: 8px 12px;
                 font-size: 0.9em;
+                /* Ensures links don't stretch fully across on a single line if they wrap */
+                flex-basis: auto;
             }
             .section {
                 padding: 40px 0;
-                /* Adjust scroll-margin-top for smaller screens if navbar height changes significantly */
-                scroll-margin-top: 90px; /* Example adjustment */
+                scroll-margin-top: 90px;
             }
             .section h2 {
                 font-size: 2em;
@@ -623,6 +633,11 @@
                         <p>Whether you're looking to sell, rent, or invest, we're here to help you navigate the DFW real estate market with ease.</p>
                         <p><strong>Email:</strong> <a href="mailto:info@radstexas.com" style="color: var(--primary-color); text-decoration: none;">info@radstexas.com</a></p>
                         <p><strong>Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM CDT</p>
+                        <div class="social-links" style="margin-top: 20px;">
+                            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square" style="color: var(--white-color); margin-right: 15px;"></i></a>
+                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" style="color: var(--white-color); margin-right: 15px;"></i></a>
+                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram-square" style="color: var(--white-color);"></i></a>
+                        </div>
                     </div>
                     <div class="contact-form-container">
                         <h3>Send Us a Message</h3>
