@@ -41,7 +41,11 @@
             line-height: 1.2;
         }
 
-        h1 { font-size: 3.2em; font-weight: 700; }
+        h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            display: none; /* Hidden by default for mobile first approach */
+        }
         h2 { font-size: 2.5em; font-weight: 600; }
         h3 { font-size: 1.8em; font-weight: 600; }
         h4 { font-size: 1.5em; font-weight: 600; }
@@ -92,6 +96,15 @@
             color: var(--white-color);
         }
 
+        /* Brand Placeholder - Hidden by default on Desktop */
+        .brand-placeholder {
+            color: var(--white-color);
+            font-weight: 700;
+            font-size: 1.5em;
+            font-family: 'Montserrat', sans-serif;
+            display: none; /* Hidden on desktop */
+        }
+
         /* Hamburger menu specific styles - Desktop Default */
         .menu-toggle {
             display: none; /* Hidden by default on desktop */
@@ -100,22 +113,28 @@
             cursor: pointer;
             padding: 5px 10px;
         }
+        .mobile-header-elements {
+            display: none; /* Hidden on desktop */
+        }
 
         /* Mobile specific styles */
         @media (max-width: 768px) {
             .navbar .container {
-                flex-direction: row; /* Keep brand and toggle in a row */
-                justify-content: space-between;
-                align-items: center;
+                flex-direction: column; /* Temporarily set to column to accommodate mobile-header-elements for fixed position */
+                align-items: flex-start; /* Align elements to the start */
             }
 
+            .mobile-header-elements {
+                width: 100%;
+                display: flex; /* Show on mobile */
+                justify-content: space-between; /* Space out brand and toggle */
+                align-items: center; /* Vertically align them */
+            }
+
+            /* Show brand-placeholder on mobile (collapsed state) */
             .brand-placeholder {
-                display: block !important; /* Ensure brand is visible on mobile */
-                color: var(--white-color);
-                font-weight: 700;
-                font-size: 1.5em;
-                font-family: 'Montserrat', sans-serif;
-                /* Adjust spacing or alignment if needed */
+                display: block;
+                /* No padding here, let the mobile-header-elements handle alignment */
             }
 
             .nav-links {
@@ -151,20 +170,29 @@
                 right: 0; /* Slide into view */
             }
 
+            /* Hide brand-placeholder when menu is active */
+            body.menu-active .brand-placeholder {
+                display: none;
+            }
+
             .menu-toggle {
                 display: block; /* Show hamburger icon on mobile */
-                position: fixed; /* Keep it fixed relative to viewport */
-                top: 25px; /* Adjust vertical position */
-                right: 20px; /* Initial position on the right */
-                z-index: 1002; /* Above the menu itself */
+                /* Remove fixed positioning when collapsed for alignment with brand */
+                position: relative;
+                top: auto;
+                right: auto;
+                z-index: auto;
                 transition: transform var(--transition-speed), right var(--transition-speed), left var(--transition-speed);
             }
 
-            /* Move toggle to left when menu is active and change icon */
+            /* When menu is active, make toggle fixed for movement */
             body.menu-active .menu-toggle {
+                position: fixed; /* Make fixed when menu is open */
+                top: 25px; /* Adjust vertical position */
                 right: auto; /* Remove right positioning */
                 left: 20px; /* Move to the left */
                 transform: rotate(90deg); /* Optional: rotate X icon */
+                z-index: 1002; /* Above the menu itself */
             }
             body.menu-active .menu-toggle .fa-bars {
                 display: none; /* Hide bars */
@@ -194,7 +222,26 @@
                 display: block;
                 opacity: 1;
             }
+
+            /* Hide h1 on mobile */
+            .hero-header h1 {
+                display: none;
+            }
         }
+
+        /* Desktop specific styles for h1 */
+        @media (min-width: 769px) {
+            .hero-header h1 {
+                display: block; /* Show h1 on desktop */
+            }
+            .navbar .container {
+                flex-direction: row; /* Ensure row direction on desktop */
+            }
+            .mobile-header-elements {
+                display: none; /* Hide on desktop */
+            }
+        }
+
 
         /* --- Hero Header (after Navbar) --- */
         .hero-header {
@@ -221,7 +268,7 @@
         }
 
         .hero-header h1 {
-            font-size: 4em;
+            /* Desktop display handled by media query */
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--white-color);
@@ -553,9 +600,9 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 480px) {
-            .hero-header h1 {
+            /* .hero-header h1 {
                 font-size: 2.2em;
-            }
+            } */ /* Removed as h1 is hidden on mobile entirely */
             .hero-header p {
                 font-size: 1em;
             }
@@ -574,15 +621,17 @@
     <div class="menu-overlay" id="menuOverlay"></div>
     <nav class="navbar" id="mainNavbar">
         <div class="container">
-            <div class="brand-placeholder" style="color: var(--white-color); font-weight: 700; font-size: 1.5em; font-family: 'Montserrat', sans-serif;">RADS TEXAS</div>
+            <div class="mobile-header-elements">
+                <div class="brand-placeholder">RADS TEXAS</div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i> <i class="fas fa-times close-icon"></i> </div>
+            </div>
             <div class="nav-links">
                 <a href="#about">About Us</a>
                 <a href="#services">Our Services</a>
                 <a href="#why-choose-us">Why Choose Us</a>
                 <a href="#contact">Contact</a>
             </div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i> <i class="fas fa-times close-icon"></i> </div>
         </div>
     </nav>
 
