@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,13 +25,6 @@
             background-color: var(--light-color);
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            transition: transform var(--transition-speed);
-        }
-
-        body.menu-active {
-            position: fixed;
-            width: 100%;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -42,11 +35,7 @@
             line-height: 1.2;
         }
 
-        h1 {
-            font-size: 3.2em;
-            font-weight: 700;
-            display: none;
-        }
+        h1 { font-size: 3.2em; font-weight: 700; }
         h2 { font-size: 2.5em; font-weight: 600; }
         h3 { font-size: 1.8em; font-weight: 600; }
         h4 { font-size: 1.5em; font-weight: 600; }
@@ -58,145 +47,11 @@
             padding: 20px 0;
         }
 
-        /* --- Navbar (Hamburger Menu for all sizes) --- */
-        .navbar {
-            background-color: var(--dark-color);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        /* Brand Placeholder as Header & Centered */
-        .brand-placeholder {
-            color: var(--white-color);
-            font-weight: 700;
-            font-size: 2.5em;
-            font-family: 'Montserrat', sans-serif;
-            display: block;
-            text-align: center;
-            flex-grow: 1;
-            padding: 10px 60px;
-            box-sizing: border-box;
-            line-height: 1;
-        }
-
-        /* Media query for mobile devices */
-        @media (max-width: 767px) {
-            .brand-placeholder {
-                font-size: 1.5em;
-                padding: 10px 40px;
-            }
-        }
-
-        /* Hamburger menu specific styles */
-        .menu-toggle {
-            display: block;
-            color: var(--white-color);
-            font-size: 1.8em;
-            cursor: pointer;
-            padding: 5px 10px;
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            z-index: 1002;
-            transition: transform var(--transition-speed);
-        }
-
-        .menu-toggle .fa-times {
-            display: none;
-        }
-
-        /* Navigation Links (the actual menu) - Fixed to viewport when open */
-        .nav-links {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 70%;
-            max-width: 300px;
-            height: 100%;
-            background-color: var(--dark-color);
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding: 80px 20px 20px;
-            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
-            transition: left var(--transition-speed);
-            z-index: 1001;
-            gap: 15px;
-            display: none;
-        }
-
-        .nav-links a {
-            width: 100%;
-            text-align: left;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1.1em;
-            color: var(--white-color);
-        }
-        .nav-links a:last-child {
-            border-bottom: none;
-        }
-
-        /* When menu is active (body has menu-active class) */
-        body.menu-active .nav-links {
-            left: 0;
-            display: flex;
-        }
-
-        /* Menu toggle when menu is active: Fixed to viewport */
-        body.menu-active .menu-toggle {
-            position: fixed;
-            top: 25px;
-            left: 20px;
-            transform: translateY(0%) rotate(90deg);
-            z-index: 1002;
-        }
-        body.menu-active .menu-toggle .fa-bars {
-            display: none;
-        }
-        body.menu-active .menu-toggle .fa-times {
-            display: block;
-        }
-
-        /* Overlay for dimmed background (fixed) */
-        .menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity var(--transition-speed);
-        }
-
-        body.menu-active .menu-overlay {
-            display: block;
-            opacity: 1;
-        }
-
-        /* --- Hero Header (after Navbar) --- */
+        /* --- Header & Navigation --- */
         .hero-header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x600?text=DFW+Skyline+Background') no-repeat center center/cover;
             color: var(--white-color);
-            padding: 70px 0;
+            padding: 100px 0;
             text-align: center;
             position: relative;
         }
@@ -208,7 +63,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 123, 255, 0.2);
+            background: rgba(0, 123, 255, 0.2); /* A subtle overlay */
         }
 
         .hero-header .container {
@@ -216,11 +71,59 @@
             z-index: 2;
         }
 
+        .hero-header h1 {
+            font-size: 4em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--white-color); /* Ensure white text */
+        }
+
         .hero-header p {
             font-size: 1.5em;
             max-width: 700px;
             margin: 0 auto 30px;
             font-weight: 400;
+        }
+
+        .navbar {
+            background-color: var(--dark-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: var(--white-color);
+            font-size: 1.8em;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        .navbar-brand:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            color: var(--white-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
         }
 
         /* --- Buttons --- */
@@ -239,7 +142,7 @@
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker primary */
             transform: translateY(-2px);
         }
 
@@ -248,7 +151,7 @@
         }
 
         .btn-secondary:hover {
-            background-color: #218838;
+            background-color: #218838; /* Darker secondary */
         }
 
         /* --- Sections --- */
@@ -258,7 +161,6 @@
             background-color: var(--white-color);
             border-radius: 12px;
             box-shadow: var(--box-shadow);
-            scroll-margin-top: 80px;
         }
 
         .section:last-of-type {
@@ -323,41 +225,42 @@
         /* --- Testimonials --- */
         .testimonial-carousel {
             display: flex;
-            overflow-x: auto;
+            overflow-x: auto; /* For potential JS carousel */
             scroll-snap-type: x mandatory;
             padding-bottom: 15px;
             margin-bottom: 20px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
         }
 
-        .testimonial-carousel::-webkit-scrollbar {
+        .testimonial-carousel::-webkit-scrollbar { /* Chrome, Safari, Opera */
             display: none;
         }
 
         .testimonial-card {
             flex: 0 0 auto;
-            width: 95%;
+            width: 95%; /* Adjust for mobile, will be wider on desktop */
             max-width: 500px;
             background-color: var(--light-color);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            margin-right: 20px;
+            margin-right: 20px; /* Space between cards */
             scroll-snap-align: start;
             border-left: 5px solid var(--primary-color);
         }
         @media (min-width: 768px) {
             .testimonial-card {
-                width: 48%;
+                width: 48%; /* Two per row on larger screens */
             }
         }
         @media (min-width: 1024px) {
             .testimonial-card {
-                width: 31%;
+                width: 31%; /* Three per row on larger screens */
             }
         }
+
 
         .testimonial-card p {
             font-style: italic;
@@ -439,15 +342,10 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
-            /* NEW: Center the contact grid on mobile if its content isn't full width */
-            justify-items: center; /* Centers items within their grid cells */
-            align-items: center; /* Centers items vertically within their grid cells */
         }
         @media (min-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr 1.2fr;
-                justify-items: unset; /* Remove centering for desktop layout */
-                align-items: unset;
             }
         }
 
@@ -459,22 +357,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            /* NEW: Apply similar centering for individual contact blocks on mobile */
-            max-width: 450px; /* Limit width to prevent stretching too wide */
-            width: 100%; /* Ensure responsiveness */
-            margin: 0 auto; /* Center the block itself */
-            text-align: center; /* Center text within the block */
         }
-        /* Override for desktop to ensure text aligns left within the block */
-        @media (min-width: 768px) {
-            .contact-info-block {
-                text-align: left;
-                margin: unset; /* Remove margin auto for desktop */
-                max-width: unset; /* Remove max-width for desktop */
-            }
-        }
-
-
         .contact-info-block h3 {
             color: var(--white-color);
             margin-bottom: 25px;
@@ -497,17 +380,6 @@
             border-radius: 10px;
             box-shadow: var(--box-shadow);
             border: 1px solid var(--border-color);
-            /* NEW: Apply similar centering for the form container on mobile */
-            max-width: 450px; /* Limit width to match info block or adjust as needed */
-            width: 100%; /* Ensure responsiveness */
-            margin: 0 auto; /* Center the block itself */
-        }
-        /* Remove mobile-specific styles for desktop */
-        @media (min-width: 768px) {
-            .contact-form-container {
-                margin: unset;
-                max-width: unset;
-            }
         }
 
         .form-group {
@@ -551,9 +423,20 @@
             background-color: var(--dark-color);
             color: var(--white-color);
             text-align: center;
-            padding: 20px 0;
+            padding: 40px 0;
             font-size: 0.9em;
             border-top: 5px solid var(--primary-color);
+        }
+
+        footer .social-links a {
+            color: var(--white-color);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color var(--transition-speed);
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-color);
         }
 
         footer p {
@@ -561,48 +444,57 @@
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 767px) { /* This media query targets typical mobile screens */
-            .brand-placeholder {
-                font-size: 1.5em;
-                padding: 10px 40px;
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 80px 0;
             }
-
-            /* Adjustments for general mobile typography and buttons */
+            .hero-header h1 {
+                font-size: 2.8em;
+            }
             .hero-header p {
-                font-size: 1em;
+                font-size: 1.2em;
             }
-            .btn {
-                padding: 10px 20px;
-                font-size: 1em;
+            .navbar .container {
+                flex-direction: column;
+                gap: 15px;
             }
-            h2 {
-                font-size: 1.8em;
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
-
-            /* Centering Feature Cards and Service Cards on Mobile */
-            .section .grid-3 {
-                grid-template-columns: 1fr; /* Force single column on mobile */
-                justify-items: center; /* Centers grid items horizontally */
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.9em;
             }
-
-            .feature-card, .service-card {
-                max-width: 350px; /* Limit width of cards */
-                width: 100%; /* Ensure responsiveness within max-width */
-                margin: 0 auto; /* This centers the block-level element horizontally */
+            .section {
+                padding: 40px 0;
             }
-            
-            /* Ensure testimonial cards also adapt if they're not explicitly handled */
-            .testimonial-card {
-                width: 90%; /* Make testimonial cards slightly narrower to allow some margin if they are too wide */
-                margin-left: auto; /* Center individual testimonial cards if they are not full width */
-                margin-right: auto;
+            .section h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            .grid-3, .property-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info-block {
+                padding: 30px;
+            }
+            .contact-form-container {
+                padding: 30px;
             }
         }
 
         @media (max-width: 480px) {
-            /* Existing rules for very small phones */
+            .hero-header h1 {
+                font-size: 2.2em;
+            }
             .hero-header p {
                 font-size: 1em;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.85em;
             }
             .btn {
                 padding: 10px 20px;
@@ -616,25 +508,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <nav class="navbar" id="mainNavbar">
-        <div class="brand-placeholder">RADS TEXAS</div>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i> <i class="fas fa-times close-icon"></i> </div>
-        <div class="nav-links">
-            <a href="#about">About Us</a>
-            <a href="#services">Our Services</a>
-            <a href="#why-choose-us">Why Choose Us</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
     <header class="hero-header">
         <div class="container">
-            <h1>RADS TEXAS</h1> <p>Your Premier Partner for Buying, Renting, and Investing in Dallas-Fort Worth Real Estate.</p>
+            <h1>RADS TEXAS</h1>
+            <p>Your Premier Partner for Buying, Renting, and Investing in Dallas-Fort Worth Real Estate.</p>
             <a href="#contact" class="btn">Get a Free Consultation Today</a>
+            <a href="#rentals" class="btn btn-secondary" style="margin-left: 15px;">View Available Rentals</a>
         </div>
     </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">DFW Property Solutions</a>
+            <div class="nav-links">
+                <a href="#about">About Us</a>
+                <a href="#services">Our Services</a>
+                <a href="#why-choose-us">Why Choose Us</a>
+                <a href="#rentals">Rentals</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section id="about" class="section">
@@ -649,7 +544,7 @@
                     <div class="feature-card">
                         <i class="fas fa-handshake icon"></i>
                         <h3>Trusted Partnerships</h3>
-                        <p>We build lasting relationships with our clients, tenants, and investors based="on transparency, honesty, and mutual respect. Your success is our priority.</p>
+                        <p>We build lasting relationships with our clients, tenants, and investors based on transparency, honesty, and mutual respect. Your success is our priority.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-chart-line icon"></i>
@@ -726,6 +621,102 @@
                 </div>
             </div>
         </section>
+
+        <section id="rentals" class="section">
+            <div class="container">
+                <h2>Featured Rental Properties</h2>
+                <p class="text-center" style="margin-bottom: 40px;">Explore a selection of our premium rental homes currently available in prime DFW locations. Find your perfect fit!</p>
+                <div class="property-grid">
+                    <div class="property-card">
+                        <img src="https://via.placeholder.com/600x400?text=Modern+Dallas+Home" alt="Modern Dallas Home">
+                        <div class="property-card-content">
+                            <h3>Luxury Urban Oasis</h3>
+                            <p><strong>1234 City View Ln, Dallas, TX 75204</strong></p>
+                            <div class="details">
+                                <span><i class="fas fa-bed"></i> <strong>3</strong> Beds</span>
+                                <span><i class="fas fa-bath"></i> <strong>2.5</strong> Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> <strong>1850</strong> Sq Ft</span>
+                            </div>
+                            <p>Stunning contemporary home in the heart of Dallas, featuring open-concept living, gourmet kitchen, and a private patio. Minutes from downtown and vibrant entertainment districts.</p>
+                            <div class="price"><strong>$3,200</strong><small>/month</small></div>
+                            <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 15px;">Inquire Now</a>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://via.placeholder.com/600x400?text=Cozy+Fort+Worth+Family+Home" alt="Cozy Fort Worth Family Home">
+                        <div class="property-card-content">
+                            <h3>Charming Family Retreat</h3>
+                            <p><strong>5678 Green Acres Dr, Fort Worth, TX 76107</strong></p>
+                            <div class="details">
+                                <span><i class="fas fa-bed"></i> <strong>4</strong> Beds</span>
+                                <span><i class="fas fa-bath"></i> <strong>3</strong> Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> <strong>2400</strong> Sq Ft</span>
+                            </div>
+                            <p>Beautiful traditional home in a quiet Fort Worth neighborhood. Large backyard, updated kitchen, and excellent school proximity. Ideal for growing families.</p>
+                            <div class="price"><strong>$2,850</strong><small>/month</small></div>
+                            <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 15px;">Inquire Now</a>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://via.placeholder.com/600x400?text=Spacious+Plano+Rental" alt="Spacious Plano Rental">
+                        <div class="property-card-content">
+                            <h3>Suburban Gem in Plano</h3>
+                            <p><strong>9101 Park Ridge Rd, Plano, TX 75025</strong></p>
+                            <div class="details">
+                                <span><i class="fas fa-bed"></i> <strong>3</strong> Beds</span>
+                                <span><i class="fas fa-bath"></i> <strong>2</strong> Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> <strong>1600</strong> Sq Ft</span>
+                            </div>
+                            <p>Well-maintained home in a sought-after Plano community. Enjoy spacious living areas, a two-car garage, and easy access to major highways and shopping.</p>
+                            <div class="price"><strong>$2,600</strong><small>/month</small></div>
+                            <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 15px;">Inquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: 40px; font-size: 1.1em;">
+                    Don't see what you're looking for? Our inventory is constantly changing. <a href="#contact" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">Contact us</a> to discuss your specific rental needs!
+                </p>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section" style="background-color: var(--primary-color); color: var(--white-color);">
+            <div class="container">
+                <h2 style="color: var(--white-color);">What Our Clients Say</h2>
+                <style>
+                    #testimonials h2::after { background-color: var(--secondary-color); }
+                    .testimonial-card { border-left-color: var(--secondary-color); } /* Adjust card border for this section */
+                </style>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-card">
+                        <p>"DFW Property Solutions made selling my inherited home incredibly easy. They gave me a fair cash offer and closed in less than two weeks. No hidden fees, no stress – highly recommend!"</p>
+                        <div class="testimonial-author">- Sarah K., Dallas</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Finding a rental was a breeze with DFW Property Solutions. The property was immaculate, and their team was so responsive and helpful throughout the entire leasing process."</p>
+                        <div class="testimonial-author">- Mark T., Fort Worth</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"As an investor, I value their expertise in identifying high-growth opportunities. Their property management is top-notch, giving me peace of mind. A fantastic partner!"</p>
+                        <div class="testimonial-author">- David L., Investor</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"They helped me get out of a tough situation with my old property quickly and respectfully. Truly professional and compassionate service."</p>
+                        <div class="testimonial-author">- Emily R., Plano</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The team at DFW Property Solutions is fantastic. Always available to answer questions and address any concerns with my rental. Best landlord experience I've had!"</p>
+                        <div class="testimonial-author">- Jessica M., Frisco</div>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: 30px; font-size: 1.1em;">
+                    Ready to experience the DFW Property Solutions difference?
+                </p>
+                <div class="text-center" style="margin-top: 20px;">
+                    <a href="#contact" class="btn btn-secondary">Contact Us Now</a>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="section">
             <div class="container">
                 <h2>Get In Touch With Us</h2>
@@ -733,8 +724,15 @@
                     <div class="contact-info-block">
                         <h3>Connect with DFW Property Solutions</h3>
                         <p>Whether you're looking to sell, rent, or invest, we're here to help you navigate the DFW real estate market with ease.</p>
-                        <p><strong>Email:</strong> <a href="mailto:info@radstexas.com" style="color: var(--primary-color); text-decoration: none;">info@radstexas.com</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+12145551234" style="color: var(--primary-color); text-decoration: none;">(214) 555-1234</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:info@dfwpropertysolutions.com" style="color: var(--primary-color); text-decoration: none;">info@dfwpropertysolutions.com</a></p>
+                        <p><strong>Office:</strong> <br>123 Business Blvd, Suite 100<br>Frisco, TX 75034</p>
                         <p><strong>Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM CDT</p>
+                        <div class="social-links" style="margin-top: 20px;">
+                            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square" style="color: var(--white-color); margin-right: 15px;"></i></a>
+                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" style="color: var(--white-color); margin-right: 15px;"></i></a>
+                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram-square" style="color: var(--white-color);"></i></a>
+                        </div>
                     </div>
                     <div class="contact-form-container">
                         <h3>Send Us a Message</h3>
@@ -769,66 +767,15 @@
 
     <footer>
         <div class="container">
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
             <p>&copy; 2025 RADS TEXAS LLC. All rights reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: #e74c3c;"></i> in Frisco, TX</p>
         </div>
     </footer>
-
-    <script>
-        let scrollPosition = 0; // Store scroll position globally
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.querySelector('.nav-links');
-            const menuOverlay = document.getElementById('menuOverlay');
-            const body = document.body;
-
-            function toggleMenu() {
-                if (body.classList.contains('menu-active')) {
-                    // CLOSE menu
-                    body.classList.remove('menu-active');
-                    body.style.position = ''; // Remove fixed position
-                    body.style.top = '';      // Remove top offset
-
-                    // Scroll back to the original position
-                    window.scrollTo(0, scrollPosition);
-
-                    // Toggle icons back to bars
-                    menuToggle.querySelector('.fa-bars').style.display = 'block';
-                    menuToggle.querySelector('.fa-times').style.display = 'none';
-
-                } else {
-                    // OPEN menu
-                    scrollPosition = window.pageYOffset; // Save current scroll position
-                    body.classList.add('menu-active');
-                    body.style.top = `-${scrollPosition}px`; // Offset body by scroll position
-
-                    // Toggle icons to times
-                    menuToggle.querySelector('.fa-bars').style.display = 'none';
-                    menuToggle.querySelector('.fa-times').style.display = 'block';
-                }
-            }
-
-            if (menuToggle) {
-                menuToggle.addEventListener('click', toggleMenu);
-            }
-
-            if (navLinks) {
-                // Close menu when a link is clicked
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', (event) => {
-                        // Prevent default scroll behavior momentarily if needed, then re-enable
-                        // This part is for closing the menu. The smooth scroll to anchor is handled by CSS.
-                        if (body.classList.contains('menu-active')) {
-                            toggleMenu(); // Close the menu
-                        }
-                    });
-                });
-            }
-
-            if (menuOverlay) {
-                menuOverlay.addEventListener('click', toggleMenu); // Close menu when overlay is clicked
-            }
-        });
-    </script>
 </body>
 </html>
