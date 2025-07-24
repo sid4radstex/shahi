@@ -340,32 +340,45 @@
         /* --- Contact Form --- */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr; /* Default for mobile, single column */
             gap: 30px;
         }
         @media (min-width: 768px) {
             .contact-grid {
-                grid-template-columns: 1fr 1.2fr;
+                /* Change to flexbox for centering on desktop */
+                display: flex;
+                justify-content: center; /* Horizontally center the content */
+                align-items: center; /* Vertically center the content (useful if the parent has a defined height) */
+                /* Removed grid-template-columns for desktop as we are now using flexbox */
             }
         }
 
         .contact-info-block {
-            background-color: var(--dark-color);
-            color: var(--white-color);
+            background-color: var(--light-color);
+            color: var(--dark-color);
             padding: 40px;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
+        @media (min-width: 768px) {
+            .contact-info-block {
+                /* Constrain the width for better readability on large screens */
+                max-width: 700px; /* Adjust this value as needed */
+                width: 100%; /* Ensures it takes up to max-width */
+                margin: 0 auto; /* Explicitly centers the block within its flex parent */
+            }
+        }
         .contact-info-block h3 {
-            color: var(--white-color);
+            color: var(--primary-color);
             margin-bottom: 25px;
             font-size: 2em;
         }
         .contact-info-block p {
             margin-bottom: 15px;
             font-size: 1.1em;
+			color: var(--text-color);
         }
         .contact-info-block p strong {
             display: block;
@@ -374,6 +387,9 @@
             color: var(--primary-color);
         }
 
+        /* NOTE: contact-form-container CSS is here for completeness based on original intent,
+                 even though it's not present in your contact-grid HTML snippet.
+                 If you add the form back, this CSS will apply. */
         .contact-form-container {
             padding: 40px;
             background-color: var(--light-color);
@@ -506,6 +522,15 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script language="Javascript">
+        function sendEmail() {
+            var recipient = "info@radstexas.com";
+            var subject = document.forms[0].subject.value;
+            var body = document.forms[0].message.value;
+            var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            window.location.href = mailtoLink;
+        }
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -607,45 +632,19 @@
                 <h2>Get In Touch With Us</h2>
                 <div class="contact-grid">
                     <div class="contact-info-block">
-                        <h3>Connect with DFW Property Solutions</h3>
+                        <h3>Connect with RADS TEXAS</h3>
                         <p>Whether you're looking to sell, rent, or invest, we're here to help you navigate the DFW real estate market with ease.</p>
                         <p><strong>Email:</strong> <a href="mailto:info@radstexas.com" style="color: var(--primary-color); text-decoration: none;">info@radstexas.com</a></p>
                         <p><strong>Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM CDT</p>
                     </div>
-                    <div class="contact-form-container">
-                        <h3>Send Us a Message</h3>
-                        <form action="#" method="POST">
-                            <div class="form-group">
-                                <label for="contact-name">Name</label>
-                                <input type="text" id="contact-name" name="name" placeholder="Your Full Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-email">Email</label>
-                                <input type="email" id="contact-email" name="email" placeholder="your@email.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-phone">Phone (Optional)</label>
-                                <input type="tel" id="contact-phone" name="phone" placeholder="(123) 456-7890">
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-subject">Subject</label>
-                                <input type="text" id="contact-subject" name="subject" placeholder="e.g., Property Inquiry, Rental Application" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-message">Message</label>
-                                <textarea id="contact-message" name="message" placeholder="Tell us how we can help you..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Send Message</button>
-                        </form>
                     </div>
-                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p nowrap>&copy; 2025 RADS TEXAS LLC. All rights reserved.</p>
+            <p>&copy; 2025 RADS TEXAS LLC. All rights reserved.</p>
         </div>
     </footer>
 </body>
