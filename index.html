@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RADS TEXAS - Your Trusted Partner in DFW Real Estate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght=400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #007bff; /* Blue */
@@ -41,10 +41,11 @@
             line-height: 1.2;
         }
 
+        /* H1 is now hidden by default (for all screen sizes) */
         h1 {
             font-size: 3.2em;
             font-weight: 700;
-            display: none; /* Hidden by default for mobile first approach */
+            display: none; /* Hidden by default */
         }
         h2 { font-size: 2.5em; font-weight: 600; }
         h3 { font-size: 1.8em; font-weight: 600; }
@@ -57,7 +58,7 @@
             padding: 20px 0;
         }
 
-        /* --- Header & Navigation --- */
+        /* --- Navbar (Hamburger Menu for all sizes) --- */
         .navbar {
             background-color: var(--dark-color);
             padding: 15px 0;
@@ -65,183 +66,124 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            display: flex; /* Use flexbox for the navbar itself */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            position: relative; /* For absolute positioning of toggle */
         }
 
         .navbar .container {
+            /* This container will now mostly serve to limit width */
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Center the brand placeholder */
             align-items: center;
-            flex-direction: row;
+            width: 100%; /* Ensure it spans the width */
         }
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            flex-grow: 1;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .nav-links a {
-            color: var(--white-color);
-            text-decoration: none;
-            padding: 10px 20px;
-            font-weight: 600;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-            border-radius: 5px;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-        }
-
-        /* Brand Placeholder - Hidden by default on Desktop */
+        /* Brand Placeholder as Header & Centered */
         .brand-placeholder {
             color: var(--white-color);
             font-weight: 700;
-            font-size: 1.5em;
+            font-size: 2.5em;
             font-family: 'Montserrat', sans-serif;
-            display: none; /* Hidden on desktop */
+            display: block; /* Always visible */
+            text-align: center; /* Ensure text is centered */
+            flex-grow: 1; /* Allow it to take available space */
+            padding: 10px 60px; /* Doubled vertical padding from 0 to 10px to double height */
+            box-sizing: border-box; /* Include padding in width */
+            line-height: 1; /* Adjust line-height to vertically align with toggle */
         }
 
-        /* Hamburger menu specific styles - Desktop Default */
+        /* Hamburger menu specific styles */
         .menu-toggle {
-            display: none; /* Hidden by default on desktop */
+            display: block; /* Always visible */
             color: var(--white-color);
             font-size: 1.8em;
             cursor: pointer;
             padding: 5px 10px;
-        }
-        .mobile-header-elements {
-            display: none; /* Hidden on desktop */
-        }
-
-        /* Mobile specific styles */
-        @media (max-width: 768px) {
-            .navbar .container {
-                flex-direction: column; /* Temporarily set to column to accommodate mobile-header-elements for fixed position */
-                align-items: flex-start; /* Align elements to the start */
-            }
-
-            .mobile-header-elements {
-                width: 100%;
-                display: flex; /* Show on mobile */
-                justify-content: space-between; /* Space out brand and toggle */
-                align-items: center; /* Vertically align them */
-            }
-
-            /* Show brand-placeholder on mobile (collapsed state) */
-            .brand-placeholder {
-                display: block;
-                /* No padding here, let the mobile-header-elements handle alignment */
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Start off-screen to the right */
-                width: 70%; /* Adjust width of the side menu */
-                height: 100%;
-                background-color: var(--dark-color);
-                flex-direction: column;
-                justify-content: flex-start; /* Align items to the top */
-                align-items: flex-start; /* Align items to the left */
-                padding: 80px 20px 20px; /* Padding for content inside the slide-in menu */
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-                transition: right var(--transition-speed); /* Smooth slide-in/out */
-                z-index: 1001; /* Above hero and other content */
-                gap: 15px; /* Spacing between links */
-            }
-
-            .nav-links a {
-                width: 100%;
-                text-align: left; /* Align text to the left within the side menu */
-                padding: 12px 0; /* Adjust padding for side menu links */
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator for links */
-                font-size: 1.1em;
-            }
-            .nav-links a:last-child {
-                border-bottom: none; /* No border for the last link */
-            }
-
-            /* When menu is active (body has menu-active class) */
-            body.menu-active .nav-links {
-                right: 0; /* Slide into view */
-            }
-
-            /* Hide brand-placeholder when menu is active */
-            body.menu-active .brand-placeholder {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block; /* Show hamburger icon on mobile */
-                /* Remove fixed positioning when collapsed for alignment with brand */
-                position: relative;
-                top: auto;
-                right: auto;
-                z-index: auto;
-                transition: transform var(--transition-speed), right var(--transition-speed), left var(--transition-speed);
-            }
-
-            /* When menu is active, make toggle fixed for movement */
-            body.menu-active .menu-toggle {
-                position: fixed; /* Make fixed when menu is open */
-                top: 25px; /* Adjust vertical position */
-                right: auto; /* Remove right positioning */
-                left: 20px; /* Move to the left */
-                transform: rotate(90deg); /* Optional: rotate X icon */
-                z-index: 1002; /* Above the menu itself */
-            }
-            body.menu-active .menu-toggle .fa-bars {
-                display: none; /* Hide bars */
-            }
-            body.menu-active .menu-toggle .fa-times {
-                display: block; /* Show times */
-            }
-            .menu-toggle .fa-times {
-                display: none; /* Hide times by default */
-            }
-
-            /* Overlay for dimmed background */
-            .menu-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-                opacity: 0;
-                transition: opacity var(--transition-speed);
-            }
-
-            body.menu-active .menu-overlay {
-                display: block;
-                opacity: 1;
-            }
-
-            /* Hide h1 on mobile */
-            .hero-header h1 {
-                display: none;
-            }
+            position: absolute; /* Position absolutely within navbar */
+            top: 50%; /* Align vertically with brand */
+            left: 20px; /* Hamburger icon is in the top-left */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            z-index: 1002; /* Above overlay and menu when active */
+            transition: transform var(--transition-speed), left var(--transition-speed), right var(--transition-speed);
         }
 
-        /* Desktop specific styles for h1 */
-        @media (min-width: 769px) {
-            .hero-header h1 {
-                display: block; /* Show h1 on desktop */
-            }
-            .navbar .container {
-                flex-direction: row; /* Ensure row direction on desktop */
-            }
-            .mobile-header-elements {
-                display: none; /* Hide on desktop */
-            }
+        .menu-toggle .fa-times {
+            display: none; /* Hide X by default */
         }
 
+        /* Navigation Links (the actual menu) - Hidden by default */
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: -100%; /* Start off-screen to the LEFT */
+            width: 70%; /* Adjust width of the side menu */
+            max-width: 300px; /* Max width for larger screens */
+            height: 100%;
+            background-color: var(--dark-color);
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the top */
+            align-items: flex-start; /* Align items to the left */
+            padding: 80px 20px 20px; /* Padding for content inside the slide-in menu */
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3); /* Adjust shadow direction */
+            transition: left var(--transition-speed); /* Smooth slide-in/out from LEFT */
+            z-index: 1001; /* Above hero and other content */
+            gap: 15px; /* Spacing between links */
+            display: none; /* Hidden by default for all screen sizes */
+        }
+
+        .nav-links a {
+            width: 100%;
+            text-align: left; /* Align text to the left within the side menu */
+            padding: 12px 0; /* Adjust padding for side menu links */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator for links */
+            font-size: 1.1em;
+            color: var(--white-color); /* Links are white */
+        }
+        .nav-links a:last-child {
+            border-bottom: none; /* No border for the last link */
+        }
+
+        /* When menu is active (body has menu-active class) */
+        body.menu-active .nav-links {
+            left: 0; /* Slide into view from the LEFT */
+            display: flex; /* Show the menu */
+        }
+
+        /* Keep the menu toggle (X icon) in the top-left when active as well */
+        body.menu-active .menu-toggle {
+            position: fixed; /* Fixed when menu is open */
+            top: 25px; /* Adjust vertical position */
+            left: 20px; /* Keep it on the left */
+            right: auto; /* Ensure no conflicting right property */
+            transform: rotate(90deg); /* Optional: rotate X icon */
+        }
+        body.menu-active .menu-toggle .fa-bars {
+            display: none; /* Hide bars */
+        }
+        body.menu-active .menu-toggle .fa-times {
+            display: block; /* Show times */
+        }
+
+        /* Overlay for dimmed background */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+        }
+
+        body.menu-active .menu-overlay {
+            display: block;
+            opacity: 1;
+        }
 
         /* --- Hero Header (after Navbar) --- */
         .hero-header {
@@ -265,13 +207,6 @@
         .hero-header .container {
             position: relative;
             z-index: 2;
-        }
-
-        .hero-header h1 {
-            /* Desktop display handled by media query */
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: var(--white-color);
         }
 
         .hero-header p {
@@ -316,7 +251,8 @@
             background-color: var(--white-color);
             border-radius: 12px;
             box-shadow: var(--box-shadow);
-            scroll-margin-top: 80px; /* Adjust for sticky navbar */
+            /* Adjust scroll-margin-top to account for the fixed navbar height */
+            scroll-margin-top: 80px;
         }
 
         .section:last-of-type {
@@ -600,9 +536,6 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 480px) {
-            /* .hero-header h1 {
-                font-size: 2.2em;
-            } */ /* Removed as h1 is hidden on mobile entirely */
             .hero-header p {
                 font-size: 1em;
             }
@@ -620,25 +553,20 @@
 <body>
     <div class="menu-overlay" id="menuOverlay"></div>
     <nav class="navbar" id="mainNavbar">
-        <div class="container">
-            <div class="mobile-header-elements">
-                <div class="brand-placeholder">RADS TEXAS</div>
-                <div class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i> <i class="fas fa-times close-icon"></i> </div>
-            </div>
-            <div class="nav-links">
-                <a href="#about">About Us</a>
-                <a href="#services">Our Services</a>
-                <a href="#why-choose-us">Why Choose Us</a>
-                <a href="#contact">Contact</a>
-            </div>
+        <div class="brand-placeholder">RADS TEXAS</div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i> <i class="fas fa-times close-icon"></i> </div>
+        <div class="nav-links">
+            <a href="#about">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#why-choose-us">Why Choose Us</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header class="hero-header">
         <div class="container">
-            <h1>RADS TEXAS</h1>
-            <p>Your Premier Partner for Buying, Renting, and Investing in Dallas-Fort Worth Real Estate.</p>
+            <h1>RADS TEXAS</h1> <p>Your Premier Partner for Buying, Renting, and Investing in Dallas-Fort Worth Real Estate.</p>
             <a href="#contact" class="btn">Get a Free Consultation Today</a>
         </div>
     </header>
