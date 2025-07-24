@@ -84,7 +84,7 @@
         .brand-placeholder {
             color: var(--white-color);
             font-weight: 700;
-            font-size: 2.5em;
+            font-size: 2.5em; /* Default font size for larger screens */
             font-family: 'Montserrat', sans-serif;
             display: block; /* Always visible */
             text-align: center; /* Ensure text is centered */
@@ -92,6 +92,14 @@
             padding: 10px 60px; /* Doubled vertical padding from 0 to 10px to double height */
             box-sizing: border-box; /* Include padding in width */
             line-height: 1; /* Adjust line-height to vertically align with toggle */
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 767px) {
+            .brand-placeholder {
+                font-size: 1.5em; /* Decrease font size for mobile */
+                padding: 10px 40px; /* Adjust horizontal padding if needed */
+            }
         }
 
         /* Hamburger menu specific styles */
@@ -252,7 +260,8 @@
             border-radius: 12px;
             box-shadow: var(--box-shadow);
             /* Adjust scroll-margin-top to account for the fixed navbar height */
-            scroll-margin-top: 80px;
+            /* This is the key CSS property for sticky headers */
+            scroll-margin-top: 80px; /* You had this set to 80px, which seems appropriate for your 90px navbar + some buffer */
         }
 
         .section:last-of-type {
@@ -519,6 +528,8 @@
             border-top: 5px solid var(--primary-color);
         }
 
+        /* Removed social links from footer, so this rule is no longer directly used */
+        /*
         footer .social-links a {
             color: var(--white-color);
             font-size: 1.5em;
@@ -529,6 +540,7 @@
         footer .social-links a:hover {
             color: var(--primary-color);
         }
+        */
 
         footer p {
             margin: 10px 0 0;
@@ -670,11 +682,6 @@
                         <p>Whether you're looking to sell, rent, or invest, we're here to help you navigate the DFW real estate market with ease.</p>
                         <p><strong>Email:</strong> <a href="mailto:info@radstexas.com" style="color: var(--primary-color); text-decoration: none;">info@radstexas.com</a></p>
                         <p><strong>Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM CDT</p>
-                        <div class="social-links" style="margin-top: 20px;">
-                            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square" style="color: var(--white-color); margin-right: 15px;"></i></a>
-                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" style="color: var(--white-color); margin-right: 15px;"></i></a>
-                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram-square" style="color: var(--white-color);"></i></a>
-                        </div>
                     </div>
                     <div class="contact-form-container">
                         <h3>Send Us a Message</h3>
@@ -743,6 +750,8 @@
                 // Close menu when a link is clicked
                 navLinks.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
+                        // This event listener is ONLY for closing the menu.
+                        // The actual scrolling is handled by CSS scroll-behavior and scroll-margin-top.
                         if (body.classList.contains('menu-active')) {
                             toggleMenu(); // Close the menu
                         }
