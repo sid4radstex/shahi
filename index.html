@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RADS TEXAS - Your Trusted Partner in DFW Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #007bff; /* Blue */
@@ -522,7 +523,7 @@
             background-color: var(--dark-color);
             color: var(--white-color);
             text-align: center;
-            padding: 10px 0;
+            padding: 20px 0;
             font-size: 0.9em;
             border-top: 5px solid var(--primary-color);
         }
@@ -532,7 +533,46 @@
         }
 
         /* --- Responsive Design --- */
+        @media (max-width: 767px) { /* This media query targets typical mobile screens */
+            .brand-placeholder {
+                font-size: 1.5em;
+                padding: 10px 40px;
+            }
+
+            /* Adjustments for general mobile typography and buttons */
+            .hero-header p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+
+            /* NEW: Centering Feature Cards and Service Cards on Mobile */
+            .section .grid-3 {
+                grid-template-columns: 1fr; /* Force single column on mobile */
+                justify-items: center; /* Centers grid items horizontally */
+            }
+
+            .feature-card, .service-card {
+                max-width: 350px; /* Limit width of cards */
+                width: 100%; /* Ensure responsiveness within max-width */
+                margin: 0 auto; /* This centers the block-level element horizontally */
+            }
+            
+            /* Ensure testimonial cards also adapt if they're not explicitly handled */
+            .testimonial-card {
+                width: 90%; /* Make testimonial cards slightly narrower to allow some margin if they are too wide */
+                margin-left: auto; /* Center individual testimonial cards if they are not full width */
+                margin-right: auto;
+            }
+        }
+
         @media (max-width: 480px) {
+            /* Existing rules for very small phones */
             .hero-header p {
                 font-size: 1em;
             }
@@ -609,11 +649,13 @@
                         <i class="fas fa-key icon"></i>
                         <h3>Quality Rentals</h3>
                         <p>Discover your next home from our curated selection of well-maintained rental properties across Dallas, Fort Worth, and surrounding communities. Find comfort and convenience with us.</p>
+                        <a href="#rentals" class="btn btn-secondary btn-sm" style="font-size: 0.9em; padding: 8px 15px;">View Rentals</a>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-dollar-sign icon"></i>
                         <h3>Real Estate Investment</h3>
                         <p>Explore passive income and wealth building through strategic real estate investments. We identify, acquire, and manage high-potential properties for our partners.</p>
+                        <a href="#contact" class="btn btn-secondary btn-sm" style="font-size: 0.9em; padding: 8px 15px;">Invest With Us</a>
                     </div>
                 </div>
             </div>
