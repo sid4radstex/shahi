@@ -26,15 +26,12 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
-            /* Add this for smoother transition if content moves */
             transition: transform var(--transition-speed);
         }
 
-        /* NEW: Body styling when the menu is active */
         body.menu-active {
-            position: fixed; /* Fix the body in place */
-            width: 100%; /* Ensure it spans full width */
-            /* The 'top' property will be set by JavaScript to handle scroll position */
+            position: fixed;
+            width: 100%;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -65,14 +62,14 @@
         .navbar {
             background-color: var(--dark-color);
             padding: 15px 0;
-            position: sticky; /* THIS IS KEY FOR STICKY BEHAVIOR */
-            top: 0; /* Sticks to the top of the viewport */
-            z-index: 1000; /* High z-index to stay above content */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative; /* For absolute positioning of toggle */
+            position: relative;
         }
 
         .navbar .container {
@@ -111,21 +108,21 @@
             font-size: 1.8em;
             cursor: pointer;
             padding: 5px 10px;
-            position: absolute; /* Relative to .navbar when closed */
+            position: absolute;
             top: 50%;
             left: 20px;
             transform: translateY(-50%);
-            z-index: 1002; /* Above nav links when closed */
+            z-index: 1002;
             transition: transform var(--transition-speed);
         }
 
         .menu-toggle .fa-times {
-            display: none; /* Hide X by default */
+            display: none;
         }
 
         /* Navigation Links (the actual menu) - Fixed to viewport when open */
         .nav-links {
-            position: fixed; /* Keep fixed for slide-in behavior */
+            position: fixed;
             top: 0;
             left: -100%;
             width: 70%;
@@ -138,9 +135,9 @@
             padding: 80px 20px 20px;
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
             transition: left var(--transition-speed);
-            z-index: 1001; /* Stays above overlay */
+            z-index: 1001;
             gap: 15px;
-            display: none; /* Hidden by default, shown by JS/class */
+            display: none;
         }
 
         .nav-links a {
@@ -157,17 +154,17 @@
 
         /* When menu is active (body has menu-active class) */
         body.menu-active .nav-links {
-            left: 0; /* Slide into view */
-            display: flex; /* Show the menu */
+            left: 0;
+            display: flex;
         }
 
         /* Menu toggle when menu is active: Fixed to viewport */
         body.menu-active .menu-toggle {
-            position: fixed; /* Important: Make it fixed to the viewport when open */
-            top: 25px; /* Adjust vertical position */
-            left: 20px; /* Keep it on the left */
-            transform: translateY(0%) rotate(90deg); /* Adjust for rotation */
-            z-index: 1002; /* Ensure it's above the menu */
+            position: fixed;
+            top: 25px;
+            left: 20px;
+            transform: translateY(0%) rotate(90deg);
+            z-index: 1002;
         }
         body.menu-active .menu-toggle .fa-bars {
             display: none;
@@ -185,7 +182,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000; /* Below menu, above fixed body */
+            z-index: 1000;
             opacity: 0;
             transition: opacity var(--transition-speed);
         }
@@ -242,7 +239,7 @@
         }
 
         .btn:hover {
-            background-color: #0056b3; /* Darker primary */
+            background-color: #0056b3;
             transform: translateY(-2px);
         }
 
@@ -251,7 +248,7 @@
         }
 
         .btn-secondary:hover {
-            background-color: #218838; /* Darker secondary */
+            background-color: #218838;
         }
 
         /* --- Sections --- */
@@ -261,7 +258,7 @@
             background-color: var(--white-color);
             border-radius: 12px;
             box-shadow: var(--box-shadow);
-            scroll-margin-top: 80px; /* Important for smooth scrolling to sections */
+            scroll-margin-top: 80px;
         }
 
         .section:last-of-type {
@@ -442,10 +439,15 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
+            /* NEW: Center the contact grid on mobile if its content isn't full width */
+            justify-items: center; /* Centers items within their grid cells */
+            align-items: center; /* Centers items vertically within their grid cells */
         }
         @media (min-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr 1.2fr;
+                justify-items: unset; /* Remove centering for desktop layout */
+                align-items: unset;
             }
         }
 
@@ -457,7 +459,22 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            /* NEW: Apply similar centering for individual contact blocks on mobile */
+            max-width: 450px; /* Limit width to prevent stretching too wide */
+            width: 100%; /* Ensure responsiveness */
+            margin: 0 auto; /* Center the block itself */
+            text-align: center; /* Center text within the block */
         }
+        /* Override for desktop to ensure text aligns left within the block */
+        @media (min-width: 768px) {
+            .contact-info-block {
+                text-align: left;
+                margin: unset; /* Remove margin auto for desktop */
+                max-width: unset; /* Remove max-width for desktop */
+            }
+        }
+
+
         .contact-info-block h3 {
             color: var(--white-color);
             margin-bottom: 25px;
@@ -480,6 +497,17 @@
             border-radius: 10px;
             box-shadow: var(--box-shadow);
             border: 1px solid var(--border-color);
+            /* NEW: Apply similar centering for the form container on mobile */
+            max-width: 450px; /* Limit width to match info block or adjust as needed */
+            width: 100%; /* Ensure responsiveness */
+            margin: 0 auto; /* Center the block itself */
+        }
+        /* Remove mobile-specific styles for desktop */
+        @media (min-width: 768px) {
+            .contact-form-container {
+                margin: unset;
+                max-width: unset;
+            }
         }
 
         .form-group {
@@ -551,7 +579,7 @@
                 font-size: 1.8em;
             }
 
-            /* NEW: Centering Feature Cards and Service Cards on Mobile */
+            /* Centering Feature Cards and Service Cards on Mobile */
             .section .grid-3 {
                 grid-template-columns: 1fr; /* Force single column on mobile */
                 justify-items: center; /* Centers grid items horizontally */
@@ -621,7 +649,7 @@
                     <div class="feature-card">
                         <i class="fas fa-handshake icon"></i>
                         <h3>Trusted Partnerships</h3>
-                        <p>We build lasting relationships with our clients, tenants, and investors based on transparency, honesty, and mutual respect. Your success is our priority.</p>
+                        <p>We build lasting relationships with our clients, tenants, and investors based="on transparency, honesty, and mutual respect. Your success is our priority.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-chart-line icon"></i>
